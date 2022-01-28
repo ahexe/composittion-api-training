@@ -1,26 +1,21 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { storeToRefs } from "pinia";
+import { useTimer } from "./stores/useTimer";
 
-const seconds = ref(0);
-const minutes = ref(0);
-const hours = ref(0);
-const setSeconds = () => {
-  seconds.value++;
-  if (seconds.value === 60) {
-    minutes.value++;
-    seconds.value = 0;
-  }
-};
-setInterval(setSeconds, 1000);
+const timerStore = useTimer();
+const { showTimer, coolTimer } = storeToRefs(timerStore);
+const { setTimer } = timerStore;
+
+setInterval(setTimer, 1000);
 </script>
-
 <template>
   <div class="container">
     <div>
       <router-link to="/">
         <img alt="Vue logo" src="./assets/logo.png" />
       </router-link>
-      <h5>{{ minutes + ":" + seconds }}</h5>
+      <h5>{{ showTimer }}</h5>
+      <h5>{{ coolTimer }}</h5>
       <ul>
         <li>
           <router-link to="/profile">Profile</router-link>

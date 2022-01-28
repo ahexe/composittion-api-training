@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
-import { ref } from "vue";
-import { useStore } from "../stores";
+import { useStore } from "../stores/index";
 
 const store = useStore();
 const { firstName, lastName, fullName, age, agePlaceholder, myAry, mySumAry } =
