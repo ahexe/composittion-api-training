@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { sumAry } from "../hooks/sum";
 
 export const useStore = defineStore("main", {
   state: () => ({
@@ -10,6 +11,10 @@ export const useStore = defineStore("main", {
   }),
   getters: {
     fullName: (state) => state.firstName + " " + state.lastName,
+    myAry: (state) => [10, state.age, state.theCounter],
+    mySumAry(): number {
+      return sumAry(this.myAry);
+    },
   },
   actions: {
     counterPlusOne() {

@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+import { ref } from "vue";
 import { useStore } from "../stores";
 
 const store = useStore();
-
-const { firstName, lastName, fullName, age, agePlaceholder } =
+const { firstName, lastName, fullName, age, agePlaceholder, myAry, mySumAry } =
   storeToRefs(store);
 const { setAge } = store;
 </script>
@@ -33,6 +33,8 @@ const { setAge } = store;
   />
   <h1>{{ fullName }}</h1>
   <h2 v-if="age > 0">{{ age }}</h2>
+  <h3>{{ myAry }}</h3>
+  <h3>{{ mySumAry }}</h3>
 </template>
 
 <style scoped></style>
